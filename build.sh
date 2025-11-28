@@ -30,17 +30,23 @@ if [ -z "$ANDROID_NDK_HOME" ]; then
     android_ndk_detect
 fi
 
-export TARGET=aarch64-linux-android
-if [ $1 -eq 32 ]; then
-    export TARGET=armv7a-linux-androideabi
-fi
-
 export API=21
 export PATH="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
-export CC=aarch64-linux-android$API-clang
-export CXX=aarch64-linux-android$API-clang++
 export AR=llvm-ar
 export RANLIB=llvm-ranlib
+
+if [ $1 -eq 32 ]; then
+	echo "build to 32"
+    	export TARGET=armv7a-linux-androideabi
+	export CC=armv7a-linux-androideabi$API-clang
+	export CXX=armv7a-linux-androideabi$API-clang++
+else
+	echo "build to 64"
+	export TARGET=aarch64-linux-android
+	export CC=aarch64-linux-android$API-clang
+	export CXX=aarch64-linux-android$API-clang++
+
+fi
 
 INSTALL_DIR="`pwd`/out_libs/$TARGET"
 

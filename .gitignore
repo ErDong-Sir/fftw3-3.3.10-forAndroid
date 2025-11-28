@@ -18,3 +18,20 @@ out_libs/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #cmake-build-*
+config.h
+config.log
+config.status
+stamp-h1
+**/.deps/
+tools/fftw-wisdom-to-conf
+tools/fftw_wisdom.1
+*.o
+*.lo
+*.la
+*.f03
+*.pc
+*.pc
+*.a
+libtool
+tests/bench
+tools/fftwf-wisdom
